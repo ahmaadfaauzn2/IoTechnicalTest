@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "author": "Ahmad Fauzan",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -114.9, "left": -111, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v19.2" ] ],
+    [ "dht1:SDA", "esp:D2", "green", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v57.6", "h38.4", "v-105.6", "h153.6", "v76.8" ] ]
+  ],
+  "dependencies": {}
+}
