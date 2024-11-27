@@ -295,11 +295,13 @@ python script.py
 ```
 ![image](https://github.com/user-attachments/assets/b383539b-78a7-4257-8421-a75dab40c2ce)
 
-# Data output from kafka and node -red 
-![image](https://github.com/user-attachments/assets/53df229c-d0f2-45c6-9c08-357d99f94c15)
+# Data output from kafka and node -red in AWS Buckets
+![image](https://github.com/user-attachments/assets/7a949b19-c003-4854-9e92-837f63ff6669)
+
 
 # Json output from kafka
-![image](https://github.com/user-attachments/assets/c3381d97-ec53-4f42-99d9-7793bba463fc)
+![image](https://github.com/user-attachments/assets/807558cb-7cb8-40c1-9443-840c33817608)
+
 
 # Monitoring used Cloudwatch implemented 3 Services (PutBucketEncryption,GetBucketLoggin,GetBucketNotification)
 Implement AWS CloudWatch to monitor the services used in this integration. Set up monitoring for the following AWS S3 operations:
