@@ -293,7 +293,8 @@ Execute the script to start consuming data from Kafka and uploading it to AWS S3
 ```
 python script.py
 ```
-![image](https://github.com/user-attachments/assets/b383539b-78a7-4257-8421-a75dab40c2ce)
+![image](https://github.com/user-attachments/assets/82e4eb61-f230-48cb-93ec-1e894e15f2fe)
+
 
 # Data output from kafka and node -red in AWS Buckets
 ![image](https://github.com/user-attachments/assets/7a949b19-c003-4854-9e92-837f63ff6669)
