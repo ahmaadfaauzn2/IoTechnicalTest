@@ -1,0 +1,336 @@
+[
+    {
+        "id": "6547317d1373544b",
+        "type": "tab",
+        "label": "MQTT Dashboard",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7aed573955ebfb15",
+        "type": "mqtt in",
+        "z": "6547317d1373544b",
+        "name": "",
+        "topic": "wokwi/temperature",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6ec4dcef.913b24",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 134,
+        "y": 347,
+        "wires": [
+            [
+                "138e6fef28b3fe79",
+                "3a9d687df0bf3647",
+                "948ac95043114698",
+                "75a91190653d8833"
+            ]
+        ]
+    },
+    {
+        "id": "138e6fef28b3fe79",
+        "type": "debug",
+        "z": "6547317d1373544b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "64f07bd81c5b487a",
+        "type": "mqtt in",
+        "z": "6547317d1373544b",
+        "name": "",
+        "topic": "wokwi/humidity",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6ec4dcef.913b24",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "a1023cb1a01e1109",
+                "34944297805a9cc3",
+                "948ac95043114698",
+                "75a91190653d8833"
+            ]
+        ]
+    },
+    {
+        "id": "34944297805a9cc3",
+        "type": "ui_gauge",
+        "z": "6547317d1373544b",
+        "name": "Humidity",
+        "group": "9417503b026f1b8d",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b3d9",
+            "#0073e6",
+            "#001bd7"
+        ],
+        "seg1": "33",
+        "seg2": "66",
+        "diff": false,
+        "className": "",
+        "x": 340,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3a9d687df0bf3647",
+        "type": "ui_chart",
+        "z": "6547317d1373544b",
+        "name": "Temperature",
+        "group": "9417503b026f1b8d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 330,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a1023cb1a01e1109",
+        "type": "debug",
+        "z": "6547317d1373544b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "948ac95043114698",
+        "type": "function",
+        "z": "6547317d1373544b",
+        "name": "function 1",
+        "func": "// Mengambil nilai kelembaban dan suhu saat ini dari konteks\nlet humidity = context.get(\"humidity\") || null;\nlet temperature = context.get(\"temperature\") || null;\n\nif (msg.topic === \"wokwi/humidity\") {\n    humidity = msg.payload;\n    context.set(\"humidity\", humidity);\n} else if (msg.topic === \"wokwi/temperature\") {\n    temperature = msg.payload;\n    context.set(\"temperature\", temperature);\n}\n\n// Jika kedua nilai tidak null,  makan output JSON kedua sensor \nif (humidity !== null && temperature !== null) {\n    return { payload: { temperature, humidity } };\n} else {\n    return null; // Wait for both readings\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 240,
+        "wires": [
+            [
+                "aecc8efdbc5f900a"
+            ]
+        ]
+    },
+    {
+        "id": "aecc8efdbc5f900a",
+        "type": "debug",
+        "z": "6547317d1373544b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "c233d954ca45d913",
+        "type": "file",
+        "z": "6547317d1373544b",
+        "name": "",
+        "filename": "C:\\Users\\Hizki Khairani\\Downloads\\CSV\\data_log.csv",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 640,
+        "y": 300,
+        "wires": [
+            [
+                "1bc6240611e56c84"
+            ]
+        ]
+    },
+    {
+        "id": "75a91190653d8833",
+        "type": "function",
+        "z": "6547317d1373544b",
+        "name": "function 2",
+        "func": "// Retrieve current humidity and temperature values from context\nlet humidity = context.get(\"humidity\") || null;\nlet temperature = context.get(\"temperature\") || null;\n\n// Store incoming data based on topic\nif (msg.topic === \"wokwi/humidity\") {\n    if (typeof msg.payload === \"number\") {\n        humidity = msg.payload;\n        context.set(\"humidity\", humidity);\n    } else {\n        node.warn(\"Invalid humidity value received, skipping...\");\n        return null;\n    }\n} else if (msg.topic === \"wokwi/temperature\") {\n    if (typeof msg.payload === \"number\") {\n        temperature = msg.payload;\n        context.set(\"temperature\", temperature);\n    } else {\n        node.warn(\"Invalid temperature value received, skipping...\");\n        return null;\n    }\n}\n\n// If both values are available, create a Kafka payload\nif (humidity !== null && temperature !== null) {\n    const timestamp = new Date().toISOString();\n\n    // Prepare payload for Kafka REST Proxy\n    msg.headers = {\n        \"Content-Type\": \"application/vnd.kafka.json.v2+json\",\n        \"Accept\": \"application/vnd.kafka.v2+json\"\n    };\n\n    msg.payload = {\n        \"records\": [\n            {\n                \"value\": {\n                    \"timestamp\": timestamp,\n                    \"temperature\": temperature,\n                    \"humidity\": humidity\n                }\n            }\n        ]\n    };\n\n    // Log the payload for debugging\n    node.log(`Sending payload: ${JSON.stringify(msg.payload)}`);\n\n    // Clear the stored values after sending\n    context.set(\"humidity\", null);\n    context.set(\"temperature\", null);\n\n    return msg;\n} else {\n    // Log the current status\n    node.log(\"Waiting for both humidity and temperature data...\");\n    return null; // Wait until both values are available\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 300,
+        "wires": [
+            [
+                "c233d954ca45d913"
+            ]
+        ]
+    },
+    {
+        "id": "b566d0f62f1d07c3",
+        "type": "http request",
+        "z": "6547317d1373544b",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8082/topics/sensor-data",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "application/vnd.kafka.json.v2+json"
+            },
+            {
+                "keyType": "Accept",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "application/vnd.kafka.v2+json"
+            }
+        ],
+        "x": 1130,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1bc6240611e56c84",
+        "type": "function",
+        "z": "6547317d1373544b",
+        "name": "function 3",
+        "func": "// Log the raw response for debugging\nnode.log(`Raw response from Kafka REST Proxy: ${JSON.stringify(msg.payload)}`);\n\n// Check if the response contains 'records' and if it's an array\nif (msg.payload && msg.payload.records && Array.isArray(msg.payload.records) && msg.payload.records.length > 0) {\n    const record = msg.payload.records[0];\n    \n    // Log the record data for debugging\n    node.log(`Kafka Response Record: ${JSON.stringify(record)}`);\n    \n    // If you want to check if the record has the expected structure\n    if (record.value && record.value.timestamp) {\n        node.log(\"Successfully received a valid Kafka response record.\");\n        return msg; // Pass the message along\n    } else {\n        // Unexpected structure in 'record'\n        node.error(\"Missing expected fields in the Kafka response record\", msg.payload);\n        return null;\n    }\n} else {\n    // If the response doesn't contain records or has unexpected structure, handle it\n    node.error(\"Unexpected response structure from Kafka REST Proxy\", msg.payload);\n    return null; // Prevent sending invalid data\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 300,
+        "wires": [
+            [
+                "b566d0f62f1d07c3"
+            ]
+        ]
+    },
+    {
+        "id": "6ec4dcef.913b24",
+        "type": "mqtt-broker",
+        "name": "broker.hivemq.com",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "15",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "9417503b026f1b8d",
+        "type": "ui_group",
+        "name": "Temperature and Humidity",
+        "tab": "b672373729771b60",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b672373729771b60",
+        "type": "ui_tab",
+        "z": "6547317d1373544b",
+        "name": "Dashboard",
+        "icon": "dashboard"
+    }
+]
