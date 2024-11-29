@@ -242,7 +242,8 @@ Install Command:
 ```
 pip install kafka-python boto3
 ```
-![image](https://github.com/user-attachments/assets/dd022ecb-9b9c-49bb-a6e9-115fad493cd7)
+
+![image](https://github.com/user-attachments/assets/e2318edd-748a-4033-9717-01642cdf70bb)
 
 
 # Create Script to send kafka, change AWS S3 Config and Kafka Rest based on your own configuration!
