@@ -221,14 +221,15 @@ In this part, we integrate the IoT data pipeline with cloud services. The setup 
 
 # Register AWS S3 and choose Free Tier
 Sign up for an AWS account and choose the Free Tier option to access AWS S3 for data storage. Create an S3 bucket to store the data streamed from Kafka.
-![image](https://github.com/user-attachments/assets/0d93b9c5-ea01-4a37-9b9e-5300cedfab8b)
+![image](https://github.com/user-attachments/assets/fb4d1f2c-49e3-4b11-9653-cff76e86f1f6)
+
 
 # Consume Kafka Topic from Confluent CLI
 Use the Confluent CLI to consume messages from the Kafka topic you created earlier. This verifies that the data from Node-RED is successfully streaming into Kafka.
 ```
 confluent kafka topic consume <TOPIC_NAME> --value-format json --from-beginning
 ```
-![image](https://github.com/user-attachments/assets/422f17b2-a120-41f0-80a6-9b6026f965e8)
+
 
 # Install Dependency Kafka Python and boto3(aws s3)
 Install the necessary Python libraries for integrating Kafka and AWS S3:
