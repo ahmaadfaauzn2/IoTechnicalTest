@@ -229,6 +229,7 @@ Use the Confluent CLI to consume messages from the Kafka topic you created earli
 ```
 confluent kafka topic consume <TOPIC_NAME> --value-format json --from-beginning
 ```
+![consumee](https://github.com/user-attachments/assets/b9ab8429-e4e4-48da-ac70-331e96ad0bc1)
 
 
 # Install Dependency Kafka Python and boto3(aws s3)
