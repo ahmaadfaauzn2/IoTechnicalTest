@@ -1,4 +1,4 @@
-﻿# IoTechnicalTest
+﻿# IoTechnicalTest (Ghosted xd)
 
 # Part 1: Device Integration with Wokwi and Node-RED 
 In this part, we integrate a simulated device on the Wokwi platform with Node-RED. The setup involves data transfer between the virtual microcontroller and Node-RED using MQTT, allowing real-time data logging and visualization.
